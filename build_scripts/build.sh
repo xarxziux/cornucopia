@@ -6,7 +6,7 @@ set -e
 # Increment the build number even if the
 # rest of the script fails to complete.
 buildNum="$(<build_number)"
-buildNum=$((buildNum++))
+buildNum=$((buildNum + 1))
 echo -n "${buildNum}" > build_number
 
 # Define the file and directory names
