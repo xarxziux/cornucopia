@@ -1,3 +1,5 @@
 npm-debug.log
 testing/
 *.test.js
+*.bak
+
