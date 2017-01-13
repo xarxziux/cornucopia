@@ -15,7 +15,7 @@ tscFile="./src/1_tsc/cornucopia.js"
 ugFile="./src/2_uglified/cornucopia.min.js"
 outDir="./bin/"
 
-# If the main file has already been compiled then skip then exit
+# If the main file has already been compiled then exit
 if [ "${baseFile}" -ot "${outFile}" ]
 then
     echo Source file is up-to-date.
@@ -47,4 +47,6 @@ then
     git add -A
     git commit -m "${commitStr}"
 fi
+
+echo Compilation successful
 

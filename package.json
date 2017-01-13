@@ -1,6 +1,6 @@
 {
   "name": "cornucopia",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A random collection of small JavaScript utilities",
   "main": "bin/cornucopia.es3.js",
   "dependencies": {},

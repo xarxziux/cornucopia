@@ -95,9 +95,15 @@
     }
     exports.stripLeadingZero = stripLeadingZero;
     function isInteger(value) {
-        return ((typeof value === "number") &&
+        return ((typeof value === 'number') &&
             (isFinite(value)) &&
             (Math.floor(value) === value));
     }
     exports.isInteger = isInteger;
+    function arrToCSV(arr) {
+        return arr.reduce(function (accum, nextItem) {
+            return accum + nextItem.join('\t') + '\r\n';
+        }, '');
+    }
+    exports.arrToCSV = arrToCSV;
 });

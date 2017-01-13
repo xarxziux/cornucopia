@@ -194,8 +194,19 @@ export function stripLeadingZero (numStr1: string): string {
  */
 export function isInteger (value: number): boolean {
     
-    return ((typeof value === "number") && 
+    return ((typeof value === 'number') && 
             (isFinite(value)) && 
             (Math.floor(value) === value));
     
 }
+
+
+export function arrToCSV (arr: string[][]): string {
+    
+    return arr.reduce (function (accum: string, nextItem: string[]): string {
+        
+        return accum + nextItem.join ('\t') + '\r\n';
+        
+    }, '');
+}
+

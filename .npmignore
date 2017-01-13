@@ -1,0 +1,13 @@
+# Mirror .gitignore
+testing/
+*.test.js
+*.bak
+
+
+# Exclude development files
+src/
+build_scripts/
+tsconfig.json
+.jshintrc
+build_number
+
