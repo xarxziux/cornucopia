@@ -1,3 +1,4 @@
 {
-    "esversion": 3
+    "esversion": 3,
+    "-W032": true
 }

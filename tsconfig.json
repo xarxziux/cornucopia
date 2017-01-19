@@ -25,7 +25,7 @@
         
     },
     
-    "include": ["./src/0_base/*.ts"]
+    "include": ["./src/0_base/cornucopia.ts"]
 }
 
 

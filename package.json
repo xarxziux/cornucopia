@@ -1,15 +1,17 @@
 {
   "name": "cornucopia",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A random collection of small JavaScript utilities",
   "main": "bin/cornucopia.es3.js",
   "dependencies": {},
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "typescript": "^2.1.4",
     "uglify-js": "^2.7.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "build": "bash build_scripts/build.sh || echo Compilation failed"
   },
   "repository": {

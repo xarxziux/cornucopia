@@ -1,5 +1,10 @@
 # Cornucopia Change Log
 
+## 2016-01-19
+
+### Added
+- Added getBlankArray() and getSequentialArray() functions.
+
 ## 2016-01-12
 
 ### Added

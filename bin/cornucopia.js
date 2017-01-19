@@ -94,16 +94,46 @@
         return stripLeadingZero(numStr1.slice(1));
     }
     exports.stripLeadingZero = stripLeadingZero;
-    function isInteger(value) {
-        return ((typeof value === 'number') &&
-            (isFinite(value)) &&
-            (Math.floor(value) === value));
-    }
-    exports.isInteger = isInteger;
     function arrToCSV(arr) {
         return arr.reduce(function (accum, nextItem) {
             return accum + nextItem.join('\t') + '\r\n';
         }, '');
     }
     exports.arrToCSV = arrToCSV;
+    function isInteger(value) {
+        return ((typeof value === "number") &&
+            (isFinite(value)) &&
+            (Math.floor(value) === value));
+    }
+    ;
+    function getBlankArray(_arrSize) {
+        if ((typeof _arrSize !== 'number') ||
+            (_arrSize === Infinity) ||
+            (_arrSize !== _arrSize))
+            throw new Error('Invalid parameter passed to getBlankArray() function');
+        var arrSize = Math.round(_arrSize);
+        var arr = Array(arrSize);
+        var i = 0;
+        for (; i < arrSize;)
+            arr[i++] = '';
+        return arr;
+    }
+    exports.getBlankArray = getBlankArray;
+    function getSequentialArray(arrSize, _step) {
+        if ((typeof arrSize !== 'number') ||
+            (arrSize === Infinity) ||
+            (arrSize !== arrSize) ||
+            (typeof _step !== 'number') ||
+            (_step === Infinity) ||
+            (_step !== _step))
+            throw new Error('Invalid paramater to getSequentialArray() function');
+        var step = (_step === void 0) ?
+            1 :
+            _step;
+        return getBlankArray(arrSize)
+            .map(function (_, index) {
+            return index * step;
+        });
+    }
+    exports.getSequentialArray = getSequentialArray;
 });

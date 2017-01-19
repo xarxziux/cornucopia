@@ -23,7 +23,7 @@ interface DateObj {
     
 }
 
-export function getNow (): DateObj | null {
+function getNow (): DateObj | null {
     
     const eTime: Date = new Date();
     
@@ -67,7 +67,7 @@ export function getNow (): DateObj | null {
  * @param {Number} tLength - The desired length of the string.
  * @returns {String}
  */
-export function expandStr (baseStr: string, tLength: number): string {
+function expandStr (baseStr: string, tLength: number): string {
     
     if ((typeof baseStr !== 'string') ||
             (!isInteger (tLength)) ||
@@ -100,7 +100,7 @@ export function expandStr (baseStr: string, tLength: number): string {
  *      the string does not need to be trimmed, or the trimmed string
  *      otherwise.
  */
-export function trimNumStr (nStr: string, tLength: number, trimLeft: boolean)
+function trimNumStr (nStr: string, tLength: number, trimLeft: boolean)
         : string | null {
     
     const strRegex: RegExp = /^0*[1-9]\d*$/;
@@ -137,7 +137,7 @@ export function trimNumStr (nStr: string, tLength: number, trimLeft: boolean)
 }
 
 
-export function strToNumstr (inputStr: string): string {
+function strToNumstr (inputStr: string): string {
     
     if (typeof inputStr !== 'string')
         throw new Error ('Invalid parameter to textToNum() function.');
@@ -147,7 +147,7 @@ export function strToNumstr (inputStr: string): string {
 }
 
 
-export function getBetween (raw: number, min: number, max: number): number {
+function getBetween (raw: number, min: number, max: number): number {
     
     if ((!isInteger (raw)) ||
             (!isInteger (min)) ||
@@ -162,7 +162,7 @@ export function getBetween (raw: number, min: number, max: number): number {
 }
 
 
-export function cleanNumStr (numStr: string): string {
+function cleanNumStr (numStr: string): string {
     
     if (typeof numStr !== 'string')
         throw new Error
@@ -179,7 +179,7 @@ export function cleanNumStr (numStr: string): string {
 }
 
 
-export function stripLeadingZero (numStr1: string): string {
+function stripLeadingZero (numStr1: string): string {
     
     if (numStr1 === '') return numStr1;
     if (numStr1.slice (0, 1) !== '0') return numStr1;
@@ -188,20 +188,7 @@ export function stripLeadingZero (numStr1: string): string {
 }
 
 
-/*
- * Borrowed and adapted from https://developer.mozilla.org/en-US/
- * docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
- */
-export function isInteger (value: number): boolean {
-    
-    return ((typeof value === 'number') && 
-            (isFinite(value)) && 
-            (Math.floor(value) === value));
-    
-}
-
-
-export function arrToCSV (arr: string[][]): string {
+function arrToCSV (arr: string[][]): string {
     
     return arr.reduce (function (accum: string, nextItem: string[]): string {
         
@@ -209,4 +196,84 @@ export function arrToCSV (arr: string[][]): string {
         
     }, '');
 }
+
+
+/*
+ * Borrowed/adatped/stolen from https://developer.mozilla.org/en-US/docs/
+ * Web/JavaScript/Reference/Global_Objects/Number/isInteger
+ */
+function isInteger (value: number): boolean {
+    
+    return ((typeof value === "number") && 
+            (isFinite (value)) && 
+            (Math.floor (value) === value));
+};
+
+
+/*
+ * If passed a number, this returns an array of blank strings with a length
+ * equal to the arguement.  On all other parameters it throws an error.
+ */
+function getBlankArray (_arrSize: number): string[] {
+    
+    if ((typeof _arrSize !== 'number') ||
+            (_arrSize === Infinity) ||
+            (_arrSize !== _arrSize))
+        throw new Error (
+                'Invalid parameter passed to getBlankArray() function');
+    
+    const arrSize: number = Math.round (_arrSize);
+    const arr: any[] = Array (arrSize);
+    let i: number = 0;
+    
+    for (; i < arrSize;) arr [i++] = '';
+    
+    return arr;
+    
+}
+
+
+/*
+ * If passed a number, this returns an array of numbers with a length
+ * equal to the argument with the first element equalling zero and the rest
+ * incrementing from there.  On all other parameters it throws an error.
+ */
+function getSequentialArray (arrSize: number, _step?: number): number[] {
+    
+    if ((typeof arrSize !== 'number') ||
+            (arrSize === Infinity) ||
+            (arrSize !== arrSize) ||
+            (typeof _step !== 'number') ||
+            (_step === Infinity) ||
+            (_step !== _step))
+        throw new Error (
+                'Invalid paramater to getSequentialArray() function');
+    
+    const step: number = (_step === void 0) ?
+        1 :
+        _step;
+    
+    return getBlankArray (arrSize)
+        .map (function (_: string, index: number) {
+            
+            return index * step;
+            
+        });
+}
+
+
+export {
+    
+    getNow,
+    expandStr,
+    trimNumStr,
+    strToNumstr,
+    getBetween,
+    cleanNumStr,
+    stripLeadingZero,
+    arrToCSV,
+    getBlankArray,
+    getSequentialArray
+    
+};
 
