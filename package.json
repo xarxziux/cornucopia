@@ -2,7 +2,7 @@
   "name": "cornucopia",
   "version": "0.0.4",
   "description": "A random collection of small JavaScript utilities",
-  "main": "bin/cornucopia.es3.js",
+  "main": "./bin/cornucopia.min.js",
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",
@@ -11,8 +11,8 @@
     "uglify-js": "^2.7.5"
   },
   "scripts": {
-    "test": "mocha",
-    "build": "bash build_scripts/build.sh || echo Compilation failed"
+    "test": "jshint ./src/test/test.js && mocha ./src/test/test.js",
+    "build": "bash ./build_scripts/build.sh || echo Compilation failed"
   },
   "repository": {
     "type": "git",

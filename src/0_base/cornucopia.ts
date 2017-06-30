@@ -262,6 +262,14 @@ function getSequentialArray (arrSize: number, _step?: number): number[] {
 }
 
 
+const isNothing: (x: any) => boolean = x => (
+    
+    ((typeof x === 'undefined') || (x === null))
+    
+);
+
+
+
 export {
     
     getNow,
@@ -273,7 +281,7 @@ export {
     stripLeadingZero,
     arrToCSV,
     getBlankArray,
-    getSequentialArray
+    getSequentialArray,
+    isNothing
     
 };
-

@@ -1,5 +1,10 @@
 # Cornucopia Change Log
 
+## 2017-06-30
+
+### Changed
+- cornucopia.js: added isNothing() function.
+
 ## 2016-01-19
 
 ### Changed
@@ -7,7 +12,7 @@
 - build.sh: changed commit logic so that it now automatically creates a git tag and publishes to NPM (untested).
 
 ### Added
-- Added basic tests
+- Added basic tests.
 - Added getBlankArray() and getSequentialArray() functions.
 
 ## 2016-01-12
